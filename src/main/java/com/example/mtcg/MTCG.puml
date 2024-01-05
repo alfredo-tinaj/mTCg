@@ -1,0 +1,121 @@
+@startuml
+'https://plantuml.com/class-diagram
+MonsterType <-- Card: D.A
+ElementType <-- Card: D.A.
+User *-- Deck: Composition
+Card <-- User: Directed A.
+User *-- Stack: Composition
+Stack o-- Card: Aggregation
+CardType <.. Card: Dependency
+Card <|-- MonsterCard: inherits (child class)
+SpellCard -- (Card,MonsterCard): inherits (child class)
+Deck o-- Card: Aggregation
+Deck "1...4"-- "1" Stack
+Market .. User
+Store .. User
+Trading .. User
+Battle .. "2" User
+
+
+class User {
+
+    -username: String
+    -password: String
+    -coins: int
+    -Deck: Deck
+    -Stack: Stack
+    -elo: int
+    -wins: int
+    -losses: int
+    -games: int
+    +win(): void
+    +lose(): void
+    +draw(): void
+    +buyPackage(): void
+    +eloCalculator(): void
+
+}
+
+class Market {
+
+}
+class Store {
+
+}
+class Deck {
+
+    -Deck: LinkedList<Card>
+    -Cards: int
+    +randomCard(): Card
+
+
+}
+class Card {
+    #id: String
+    #name: String
+    #damage: int
+    #type: ElementType
+    #monsterType: MonsterType
+    #cardtype: CardType
+    +generateCard(): Card
+
+}
+class MonsterCard {
+    -cardType: CardType
+}
+
+class SpellCard {
+    -cardType: CardType
+}
+enum CardType {
+
+    Monster, Spell
+
+}
+ class Stack {
+
+    -Stack: LinkedList<Card>
+    +addCard(Card): void
+    +removeCard(): void
+
+
+}
+
+enum ElementType {
+
+    FIRE, WATER, NORMAL
+    +generateElement(): ElementType
+    +generateDamage(): int
+
+}
+
+enum MonsterType {
+
+    GOBLIN, DRAGON, WIZARD,
+    ORK, KNIGHT, KRAKEN,
+    ELVE, TROLL, NORMAL
+
+    +generateMonster(): MonsterType
+
+
+}
+
+class Battle{
+ -player1: User
+ -player2: User
+ +fight(): void
+ +takeCard(): void
+ +Monsterfight(): int
+ +SpellFight(): int
+
+}
+class Trading{
+    -id: int
+    -cardtotrade: String
+    -minimumdamage: int
+    +getId():int
+    +getCardtotrade():String
+    getMinimumdamage():int
+}
+
+@enduml
