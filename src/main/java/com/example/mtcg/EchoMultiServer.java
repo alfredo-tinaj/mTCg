@@ -811,8 +811,8 @@ public class EchoMultiServer {
         public String getAuthorizationToken(BufferedReader in) throws IOException {
             String line;
             while ((line = in.readLine()) != null && !line.isEmpty()) {
-                if (line.startsWith("Authorization: Basic ")) {
-                    return line.substring(21);
+                if (line.startsWith("Authorization: Bearer ")) {
+                    return line.substring(22);
                 }
                 else {
                     //error
