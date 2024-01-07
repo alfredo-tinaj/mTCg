@@ -53,7 +53,7 @@ public class Client {
         // Set the POSTGRESQL database credentials
         String url = "jdbc:postgresql://localhost:5432/postgres";
 
-        Connection conn = DriverManager.getConnection(url, "postgres", "Bazisugrokatica11");
+        Connection conn = DriverManager.getConnection(url, "alfredotinaj", "ferdimtcg");
         System.out.println("Welcome to the Monster Trading Card Game!");
         System.out.println("------------------------------------------");
         System.out.println("If you want to exit the log in or registering: write 'exit'\n\n");

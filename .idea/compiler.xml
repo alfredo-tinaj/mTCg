@@ -10,8 +10,5 @@
         <module name="MTCG" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="MTCG" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

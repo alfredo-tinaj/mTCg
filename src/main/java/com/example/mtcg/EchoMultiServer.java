@@ -22,7 +22,7 @@ public class EchoMultiServer {
 
     public void start(int port) {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "Bazisugrokatica11");
+            Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "alfredotinaj", "ferdimtcg");
             serverSocket = new ServerSocket(port);
             System.out.println("MTCG Server started on port " + port);
 
@@ -70,7 +70,7 @@ public class EchoMultiServer {
 
         public void run() {
             try {
-                Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "Bazisugrokatica11");
+                Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "alfredotinaj", "ferdimtcg");
                 out = new PrintWriter(clientSocket.getOutputStream(), true);
                 in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 String inputLine;
