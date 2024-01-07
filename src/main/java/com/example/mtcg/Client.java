@@ -153,10 +153,10 @@ public class Client {
                 outplay.println("Authorization: Basic admin-mctgToken");
                 outplay.println();
                 outplay.println("{ \"user\": ");
-                outplay.close();
 
                 System.out.println("You are now playing against " + inplay.readLine());
                 System.out.println("You have 4 cards in your hand: ");
+                outplay.close();
                 socketclient.close();
 
             }
