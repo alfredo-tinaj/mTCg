@@ -9,8 +9,8 @@ public class Store {
 
     public void buyPackage(User user) {
         user.pays(5);
-        // generálunk egy package-et
-        // odaadjuk a user-nek
-        // user boldog. :-)
+        // generate a package
+        // give it to the user
+        // user is happy. :-)
     }
 }

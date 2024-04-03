@@ -16,7 +16,7 @@ import java.util.*;
 
 
 
-public class EchoMultiServer {
+public class MultiServer {
 
     private ServerSocket serverSocket;
 
@@ -121,7 +121,6 @@ public class EchoMultiServer {
                     else if (elsoSorDarabok[1].startsWith("/packages")){
                         String token = getAuthorizationToken(in);
                         if (!token.equals("admin-mtcgToken")) {
-                            // hiba van
                             out.println("HTTP/1.1 401 Unauthorized");
                             out.println("Content-Type: text/html");
                             out.println("");
@@ -153,7 +152,6 @@ public class EchoMultiServer {
                         String token = getAuthorizationToken(in);
 
                         String username = "";
-                        // TODO token ellenőrzése: van, és -mctgToken-re végződik, és ebből kellene az, ami ez előtt van
                         if(token != null && token.endsWith("-mtcgToken")){
 
                             int indexToken = token.indexOf("-mtcgToken");
@@ -748,7 +746,7 @@ public class EchoMultiServer {
 
                                 break;
 
-                            case "DELETE": //egy adott user torlese. pelda: /users/1
+                            case "DELETE":
                                 String userIdStr = elsoSorDarabok[1].substring(7);
                                 int userId = Integer.parseInt(userIdStr);
                                 User deleted = rest.deleting(userId);
@@ -845,7 +843,7 @@ public class EchoMultiServer {
 
     public static void main(String[] args) {
 
-        EchoMultiServer server = new EchoMultiServer();
+        MultiServer server = new MultiServer();
         server.start(10001);
 
     }

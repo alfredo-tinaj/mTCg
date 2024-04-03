@@ -15,6 +15,6 @@ public class Stack {
     }
 
     public void removeCard(Card toRemove) {
-        this.Stack.remove(toRemove); // Card-ban megadott equals() alapján fog törölni: az elsőt, amire az equals() igazat ad a paraméterben kapott Card-ra
+        this.Stack.remove(toRemove);
     }
 }

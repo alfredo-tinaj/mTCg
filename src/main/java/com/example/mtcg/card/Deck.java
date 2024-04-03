@@ -10,7 +10,7 @@ public class Deck {
 
     private final int Cards;
 
-    private final LinkedList<Card> deck; //interfaceben hozzam be, ne itt dekraráljam explicit módon
+    private final LinkedList<Card> deck;
 
     Random random = new Random();
 

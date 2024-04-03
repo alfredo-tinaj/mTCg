@@ -399,7 +399,7 @@ public class Client {
                 System.out.println("Leaderboard:");
 
                 System.out.println("Most games won:");
-                String sql = "SELECT username, wins FROM user ORDER BY wins DESC";
+                String sql = "SELECT username, wins FROM users ORDER BY wins DESC";
                 PreparedStatement statement = conn.prepareStatement(sql);
                 ResultSet rs = statement.executeQuery();
 
@@ -409,15 +409,23 @@ public class Client {
                     System.out.println(wusername + ": " + gamesWon);
                 }
                 System.out.println("Best win ratio: ");
-                String sql2 = "SELECT username, wins, losses FROM user ORDER BY wins/losses DESC";
+                String sql2 = "SELECT username, wins, losses, " +
+                        "CASE " +
+                        "WHEN losses = 0 THEN 0 " +
+                        "ELSE wins / CAST(losses AS FLOAT) " +
+                        "END AS win_ratio " +
+                        "FROM users " +
+                        "ORDER BY win_ratio DESC";
+
                 PreparedStatement statement2 = conn.prepareStatement(sql2);
                 ResultSet rs2 = statement2.executeQuery();
-                while (rs.next()) {
-                    String wusername = rs.getString("username");
-                    int gamesWon = rs.getInt("wins");
-                    int gamesLost = rs.getInt("losses");
-                    System.out.println(wusername + ": " + gamesWon/gamesLost+"%");
+
+                while (rs2.next()) {
+                    String wusername = rs2.getString("username");
+                    float winRatio = rs2.getFloat("win_ratio") * 100; // Multiplied by 100 to convert to percentage
+                    System.out.printf("%s: %.2f%%\n", wusername, winRatio);
                 }
+
 
             }
             else if(choice2 == 5){

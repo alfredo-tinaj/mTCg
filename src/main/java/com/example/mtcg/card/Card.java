@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.Objects;
 @Getter
 @Setter
@@ -14,9 +13,7 @@ public class Card {
     protected int damage;
     protected String id;
     protected ElementType type;
-
     protected MonsterType monsterType;
-
     protected CardType cardtype;
 
     public Card(String name, int damage, ElementType type ,MonsterType monsterType){
@@ -36,7 +33,11 @@ public class Card {
 
     }
     @JsonCreator
-    public Card(@JsonProperty("id") String id, @JsonProperty("name") String name, @JsonProperty("damage") int damage){
+    public Card(
+            @JsonProperty("id") String id,
+            @JsonProperty("name") String name,
+            @JsonProperty("damage") int damage
+    ){
         this.id = id;
         this.name = name;
         this.damage = damage;
